@@ -17,18 +17,17 @@ api = tweepy.API(auth_handler, wait_on_rate_limit=True)
 switch = 1
 while switch == 1:
     crypto = requests.get(
-        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cethereum%2Csolana%2Cmatic%2C&vs_currencies=inr%2Cinr%2Cinr%2Cinr%2Cinr%2C'
+        'https://api.coingecko.com/api/v3/simple/price?ids=the-sandbox%2Cdecentraland%2C&vs_currencies=inr%2C%2C'
     )
     price_crypto_inr = crypto.json()
 
-    cardano = str(price_crypto_inr['cardano']['inr'])
-    bitcoin = str(price_crypto_inr['bitcoin']['inr'])
-    solana = str(price_crypto_inr['solana']['inr'])
-    ethereum = str(price_crypto_inr['ethereum']['inr'])
-
-    tweet = "📉BTC: ₹" + bitcoin  +"\n" + "📉ADA: ₹" + cardano +"\n" + "📈SOL: ₹" + solana +"\n" + "💸ETH: ₹" + ethereum 
-    # tweet = "Hi"
-    api.update_status(tweet)
-    print(tweet)
+    SAND = str(price_crypto_inr['the-sandbox']['inr'])
+    MANA = str(price_crypto_inr['decentraland']['inr'])
+    #tweet = "📉BTC: ₹" + bitcoin  +"\n" + "📉ADA: ₹" + cardano +"\n" + "📈SOL: ₹" + solana +"\n" + "💸ETH: ₹" + ethereum 
+    tweet2 = "⌛SAND: ₹" + SAND +"\n" + "🧝‍♂️MANA: ₹" + MANA
+    #api.update_status(tweet)
+    api.update_status(tweet2)
+    #print(tweet)
+    print(tweet2)
     time.sleep(10*60*60)
     print("Tweeted")
